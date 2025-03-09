@@ -1,8 +1,9 @@
-const Total = ({ exercises }) => {
-  const totalExercises = exercises.reduce((accumulator, currentVal) => {
+const Total = ({ parts }) => {
+
+  const totalExercises = parts.reduce((accumulator, currentVal) => {
     return accumulator + currentVal.exercises;
   }, 0);
-
+  
   return (
     <>
       <p>Number of exercises {totalExercises}</p>
