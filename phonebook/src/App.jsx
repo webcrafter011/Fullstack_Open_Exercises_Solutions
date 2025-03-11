@@ -10,10 +10,21 @@ const App = () => {
       name: newName,
     };
 
-    const newArr = [...persons, newPerson];
-    setPersons(newArr);
+    let toAdd = true;
+    persons.forEach((person) => {
+      if (person.name.toLowerCase() === newName.toLowerCase()) {
+        toAdd = false;
+      }
+    });
+
+    if (toAdd) {
+      const newArr = [...persons, newPerson];
+      setPersons(newArr);
+      console.log(newArr);
+    } else {
+      window.alert(`${newName} is already added to phonebook`);
+    }
     setNewName("");
-    console.log(newArr);
   };
 
   const handleChange = (event) => {
