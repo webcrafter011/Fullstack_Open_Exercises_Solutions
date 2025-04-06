@@ -18,7 +18,13 @@ export const deletePerson = (id) => {
     .delete(`${baseUrl}/${id}`)
     .then((response) => {
       console.log(`Deleted person with id ${id}`);
-      return response.data
+      return response.data;
     })
     .catch((e) => console.error(e));
+};
+
+export const updateNumber = (changedPerson) => {
+  return axios.put(`${baseUrl}/${changedPerson.id}`, changedPerson).then((response) => {
+    return response.data;
+  });
 };

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Persons from "./components/Persons";
 import PersonForm from "./components/PersonForm";
 import Filter from "./components/FIlter";
-import { getAll, addPerson } from "./services/notes";
+import { getAll, addPerson, updateNumber } from "./services/notes";
 
 const App = () => {
   // Application State
@@ -36,8 +36,28 @@ const App = () => {
         setPersons([...persons, response]);
       });
     } else {
-      window.alert(`${newName} is already added to phonebook`);
+      const update = window.confirm(
+        `${newName} is already added to phonebook would you like to update number?`
+      );
+      if (!update) return;
+
+      const person = persons.find(
+        (person) => person.name.toLowerCase() === newName.toLowerCase()
+      );
+      const changedPerson = { ...person, number: newNumber };
+
+      updateNumber(changedPerson).then((response) => {
+        setPersons(
+          persons.map((person) =>
+            person.name.toLowerCase() === newName.toLowerCase()
+              ? response
+              : person
+          )
+        );
+      });
     }
+    
+    // reseting form after adding new entry 
     setNewName("");
     setNewNumber("");
   };
