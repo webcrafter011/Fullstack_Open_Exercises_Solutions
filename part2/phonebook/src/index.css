@@ -1,0 +1,40 @@
+/* General message styling */
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid;
+    font-size: 16px;
+  }
+  
+  /* Success message styling */
+  .success {
+    color: green;
+    background-color: #dff0d8; /* Light green background */
+    border-color: #d6e9c6; /* Darker green border */
+  }
+  
+  /* Error message styling (optional, but good practice) */
+  .error {
+    color: red;
+    background-color: #f2dede; /* Light red background */
+    border-color: #ebccd1; /* Darker red border */
+  }
+  
+  /* Add other styles as needed */
+  body {
+    font-family: sans-serif;
+  }
+  
+  input {
+    margin-bottom: 5px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
