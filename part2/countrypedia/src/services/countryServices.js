@@ -13,3 +13,12 @@ export const findCountry = (input) => {
     return matchingCountries;
   });
 };
+
+export const findMatch = (countries, input) => {
+  const country = countries.find(
+    (country) =>
+      country.name.common.toLowerCase() === input.trim().toLowerCase()
+  );
+
+  return country;
+};
