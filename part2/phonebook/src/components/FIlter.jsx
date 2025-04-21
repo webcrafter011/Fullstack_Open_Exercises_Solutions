@@ -3,7 +3,7 @@ const Filter = ({ value, setFilter }) => {
     <>
       <div>
         Filter shown with:{" "}
-        <input value={value} onChange={(e) => setFilter(e.target.value)} />
+        <input value={value} onChange={setFilter} />
       </div>
     </>
   );

@@ -117,7 +117,7 @@ const App = () => {
 
       <Message message={notification.message} type={notification.type} /> {/* Pass notification state */}
 
-      <Filter value={filter} onChange={handleFilterChange} /> {/* Pass onChange directly */}
+      <Filter value={filter} setFilter={handleFilterChange} /> {/* Pass onChange directly */}
 
       <h3>Add a new</h3>
       <PersonForm
