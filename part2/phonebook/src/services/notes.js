@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/api/persons";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 export const getAll = () => {
   return axios
@@ -24,7 +24,9 @@ export const deletePerson = (id) => {
 };
 
 export const updateNumber = (changedPerson) => {
-  return axios.put(`${baseUrl}/${changedPerson.id}`, changedPerson).then((response) => {
-    return response.data;
-  });
+  return axios
+    .put(`${baseUrl}/${changedPerson.id}`, changedPerson)
+    .then((response) => {
+      return response.data;
+    });
 };
