@@ -55,7 +55,7 @@ const App = () => {
               persons.map((person) =>
                 person.id !== existingPerson.id ? person : returnedPerson
               )
-            ).catch((e) => console.log(e));
+            ) 
             showNotification(`Updated number for ${returnedPerson.name}`);
             setNewName(""); // Reset form
             setNewNumber(""); // Reset form
