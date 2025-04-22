@@ -28,5 +28,6 @@ export const updateNumber = (changedPerson) => {
     .put(`${baseUrl}/${changedPerson.id}`, changedPerson)
     .then((response) => {
       return response.data;
-    });
+    })
+    .catch(e => console.log(e))
 };
