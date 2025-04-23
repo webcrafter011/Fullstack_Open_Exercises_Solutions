@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import Persons from "./components/Persons";
 import PersonForm from "./components/PersonForm";
-import Filter from "./components/FIlter"; // Corrected import typo
+import Filter from "./components/FIlter";
 import {
   getAll,
   addPerson,
   updateNumber,
   deletePerson,
-} from "./services/notes"; // Added deletePerson import
+} from "./services/persons";
 import Message from "./components/Message";
 
 const App = () => {
@@ -55,7 +55,7 @@ const App = () => {
               persons.map((person) =>
                 person.id !== existingPerson.id ? person : returnedPerson
               )
-            ) 
+            );
             showNotification(`Updated number for ${returnedPerson.name}`);
             setNewName(""); // Reset form
             setNewNumber(""); // Reset form
@@ -81,9 +81,16 @@ const App = () => {
           setNewNumber(""); // Reset form
         })
         .catch((error) => {
-          console.error("Failed to add person:", error);
-          // Optional: Show an error notification
-          showNotification(`Failed to add ${newName}`, "error");
+          if (
+            error.response &&
+            error.response.data &&
+            error.response.data.error
+          ) {
+            showNotification(`${error.response.data.error}`, "error");
+          } else {
+            showNotification(`Failed to add ${newName}`, "error");
+            console.error("Add error:", error);
+          }
         });
     }
   };

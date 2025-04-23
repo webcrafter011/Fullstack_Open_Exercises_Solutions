@@ -10,7 +10,12 @@ export const getAll = () => {
 };
 
 export const addPerson = (newPerson) => {
-  return axios.post(baseUrl, newPerson).then((response) => response.data);
+  return axios
+    .post(baseUrl, newPerson)
+    .then((response) => response.data)
+    .catch((e) => {
+      throw e;
+    });
 };
 
 export const deletePerson = (id) => {
@@ -29,5 +34,7 @@ export const updateNumber = (changedPerson) => {
     .then((response) => {
       return response.data;
     })
-    .catch(e => console.log(e))
+    .catch((e) => {
+      throw e;
+    });
 };
